@@ -1,0 +1,119 @@
+9. ---- Archivos ----
+
+(a) ¿Cómo se identifican los archivos en GNU/Linux?
+
+Los nombres de los archivos en los sistemas de ficheros ext2, ext3 y ext4, que son los nativos de GNU/Linux, siguen una serie de reglas:
+
+Su longitud máxima es de 256 caracteres.
+Pueden contener cualquier carácter excepto la barra (/) pues esta se utiliza para construir las rutas de los ficheros. Como ya se explicó, habría que evitar los nombres que empiezan con el carácter guión.
+Las mayúsculas y las minúsculas se consideran distintas.
+No tienen una separación entre nombre y extensión como en otros sistemas operativos. Solo hay un nombre, y como el carácter punto (.) se permite, se puede poner una extensión si se quiere, o más de una.
+Los ficheros cuyos nombres empiezan por un punto (.) se consideran ocultos para el comando que lista el contenido de los directorios (ls). Para mostrarlos será necesario especificar la opción -a del comando ls.
+
+Como en Windows, se puede emplear un cierto criterio de "tipo" para marcar las distintas clases de ficheros empleando una serie de caracteres al final del nombre que indiquen el tipo de fichero del que se trata. Así, los ficheros  de texto,  HTML,  las imágenes PNG  o   JPEG  tienen extensiones  .txt,  .htm   (o .html), .png y .jpg (o .jpeg) respectivamente. Pese a esto Linux sólo distingue tres tipos de archivos: 
+Archivos o ficheros ordinarios, son los mencionados anteriormente. 
+Directorios (o   carpetas), es   un   archivo   especial   que   agrupa   otros   ficheros   de   una   forma estructurada. 
+Archivos especiales, son la base sobre la que se asienta Linux, puesto que representan los dispositivos conectados a un ordenador, como puede ser una impresora. De esta forma introducir información en ese archivo   equivale a   enviar información a   la impresora.   Para el usuario estos dispositivos tienen el mismo aspecto y uso que los archivos ordinarios
+
+
+(b) Investigue el funcionamiento de los editores vi y mcedit, y los comandos cat y more.
+
+Vi es un editor de texto que se encuentra disponible en todas las distribuciones GNU/Linux y en gran parte de Unix. El editor Vi maneja el texto entero de un archivo en memoria, y proporciona muchas otras funcionalidades que lo hacen convertirse en uno de los editores de texto más usados por los administradores. Además, en ciertas situaciones de emergencia, este es el único editor que tendremos disponible.
+-Modos de operación en editor Vi
+**Comando: es el modo en el que encontrarás al editor cada vez que se inicia. Este modo acepta comandos en forma de letras, mueve el cursor, ejecuta comandos de salidas de texto, permite guardar cambios o salir de el editor de texto v i linux, entre otros.
+**Edición o insert de texto: permite añadir texto al fichero, es decir, cualquier carácter que introduzcamos será insertado en el documento (con la tecla esc como excepción)
+**Ex o última línea: usado para escribir comandos en la última línea al final de la pantalla. Es precedido por : y permite la manipulación de ficheros.
+Comandos del editor de texto Vi
+Algunos de los comandos del editor V i se listarán a continuación:
+
+Para iniciar en el editor Vi:
+
+vi: abre el programa sin ningún archivo.
+vi fichero: edita el fichero si existe, y si no, lo crea.
+vi fichero1 fichero2: edita varios archivos.
+:next o :n para pasar al siguiente archivo.
+:prev o :N para ir al archivo previo.
+vi + [número fichero] : edita el fichero iniciando en la línea indicada.
+vi+/patrón fichero: edita el fichero iniciando en la primera vez que encuentre el patrón.
+Demás comandos del editor Vi:
+
+i para insertar texto a la izquierda del cursor.
+a para insertar texto a la derecha del cursor.
+I se encarga de insertar texto al inicio de la línea.
+A es el encargado de insertar texto al final de la línea.
+ESC vuelve al modo comando.
+X es el comando que borra el carácter bajo el cursor.
+dd para borrar la línea actual.
+dw borra la palabra actual.
+h o flecha izquierda moverá el cursor hacia la izquierda.
+j o flecha abajo moverá el cursor a la línea de abajo.
+k o flecha arriba mueve el cursor a la línea de arriba.
+l o flecha derecha mueve el cursor a la derecha.
+:w guarda los cambios.
+:q para salir del editor.
+Además, el modo comando contiene ciertos multiplicadores que permite ejecutar un comando tantas veces como se le indique en el editor de texto V i, así por ejemplo:
+
+5Y copia cinco líneas.
+10dd borra diez líneas.
+3dw borra 3 palabras.
+8j mueve el cursor 8 líneas abajo.
+Respecto al movimiento del cursor en el modo comando del editor de texto V i, tenemos:
+
+Flechas: mover en distintas direcciones.
+$ : mueve al inicio o al final de la línea.
+G : última línea.
+xG : mueve el cursor a la línea x.
+xl : mueve el cursor al carácter x de la línea
+En cuanto a los movimientos de pantalla, tenemos en el editor de texto V i:
+
+Ctrl+ f : una pantalla adelante.
+Ctrl+ b : una pantalla atrás.
+Ctrl+ d : media pantalla adelante.
+Ctrl+ u : media pantalla atrás.
+En lo que respecta a los comandos de borrado en modo comando, tenemos en Vi Linux:
+
+x borra un carácter.
+dd borra la línea.
+D o d$ borra desde el cursor hasta fin de línea.
+d0 borra desde el cursor hasta el inicio de línea.
+dw borra desde el cursor hasta el fin de la palabra.
+También tenemos comandos para copiar y pegar en modo comando, siendo estos en Vi Linux:
+
+Y o yy copia línea.
+P pega antes del cursor.
+p pega después del cursor.
+yw copia palabra.
+En cuanto a comandos de búsqueda, tenemos en V i Linux:
+
+/cadena busca delante de la cadena.
+?cadena busca atrás de la cadena.
+n repite el último comando de búsqueda.
+N repite el último comando de búsqueda en sentido inverso.
+Otros comandos del editor V i:
+
+u deshace la última acción.
+U deshace todos los cambios en una línea.
+. repite la acción.
+
+Midnight Commander es una aplicación que funciona en modo texto. La pantalla principal consiste en dos paneles en los cuales se muestra el sistema de ficheros. Se usa de un modo similar a otras aplicaciones que corren en el shell o interfaz de comandos de Unix. Las teclas de cursor permiten desplazarse a través de los ficheros, la tecla insertar se usa para seleccionar ficheros y las Teclas de función realizan tareas tales como borrar, renombrar, editar, copiar ficheros, etc. Las versiones más recientes de Midnight Commander incluyen soporte para el ratón para facilitar el manejo de la aplicación. 
+Incluye un editor llamado mcedit. Mcedit es un ejecutable independiente, el cual también puede ser usado de forma independiente a Midnight Commander. Esta aplicación permite visualizar el contenido de ficheros y disfrutar de características como la de resaltar la sintaxis para ficheros de código fuente de ciertos lenguajes de programación, y la capacidad de trabajar tanto en modo ASCII como en modo Hexadecimal. Los usuarios pueden reemplazar mcedit por el editor que prefieran.
+Cat: El comando ‘cat’ imprimirá por pantalla el contenido del fichero sin ningún tipo de paginación ni posibilidad de modificarlo. Básicamente concatena archivos o la salida estándar en la salida estándar. Podemos pasarle parámetros tipeano segun siguente formato: cat [OPTION] [FILE]
+Donde [OPTION] representa multiples opciones de comando de linea, y [FILE] corresponde al fichero a ser procesado.
+More: Al igual que ‘cat’, ‘more’ permite visualizar por pantalla el contenido de un fichero de texto, con la diferencia con el anterior de que ‘more’ pagina los resultados. Primero mostrará por pantalla todo lo que se pueda visualizar sin hacer scroll y después, pulsando la tecla espacio avanzará de igual modo por el fichero.
+Less: El comando ‘less’ es el más completo de los tres, pues puede hacer todo lo que hace ‘more’ añadiendo mayor capacidad de navegación por el fichero (avanzar y retroceder) 
+
+Si el fichero es demasiado largo no podremos ver todo el contenido, porque pasará por pantalla muy rápido. Por ese motivo cat se suele utilizar para visualizar el contenido de archivos pequeños.
+El comando more hace lo mismo que cat, a diferencia de que muestra el fichero pantalla a pantalla, es decir, llena de texto la pantalla y se espera a que el usuario pulse la tecla <espacio> para pasar a la siguiente página. (paginado)
+El comando less es el más versátil de los tres, ya que permite moverse hacia delante y hacia atrás dentro del fichero, utilizando los cursores o las teclas de “AvPág” y “RePág”.
+
+(c) Cree un archivo llamado “prueba.exe” en su directorio personal usando el vi. El mismo
+debe contener su número de alumno y su nombre.
+
+se uso el comando "vi prueba.exe", esto creo el archivo con ese nombre en el directorio /home/fremn88. Inicia en modo comando, por lo que se pasa a modo edicion insertando el comando "i:".
+Se escribe el texto, luego se pasa a modo comando con "tecla esc", y se guarda con comando "w:". Por ultimo, salimos de editor con "q:"
+
+
+(d) Investigue el funcionamiento del comando file. Pruébelo con diferentes archivos. ¿Qué
+diferencia nota?
+
+comando file muestra el tipo de archivo, basandose en su contenido no en su extension.

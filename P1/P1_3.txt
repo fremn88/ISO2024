@@ -1,0 +1,8 @@
+3. ---- Estructura GNU/Linux ----
+
+a) componentes fundamentales
+* Kernel o nucleo
+* shell
+* filesystem
+
+b) La estructura del SO GNU/linux cuenta con un nucleo conocido como kernel linux cuya funcion es gestionar procesos y dispositivos de hw. Es fundamental para la coordinacion del funcionamiento entre hw y sw. Entre las funciones + mportantes se encuentran la admin de memoria, CPU, y E/S. 

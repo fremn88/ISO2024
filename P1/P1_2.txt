@@ -1,0 +1,24 @@
+2. ---- Distribuciones GNU/Linux ----
+
+a) Es una distribucion de software basada en nucleo linux y frecuentemente un sistema de gestion de paquetes que incluye determinados paquetes de soft, segun necesidades especificas de usuario (domestico, empresarial, servidor). Se compone de soft libre en su mayoria, pero no se limita a este.
+Se incluyen bibliotecas y herramientas del proy GNU y el sistema X Window System, procesadores de texto, hoja de calculo, reproductores multimedia, etc.
+Hay distribuciones soportadas comercialmente como Fedora(Red Hat), openSUSE(SUSE) y Ubunut(Canonical Ltd); distribuciones mantenidas por la comunidad como Debian, Arch Linux, Gentoo; y distribuciones que no estan relacionadas con empresas o comunidad, como Slackware.
+Distintas distribuciones de GNU/Linux se ven en el archivo "Linux_distribution_timeline.svg".
+Distribuciones:
+* Debian - Nacio en 1991, mantenido por comunidad, destaca por estabilidad y robustez ideal para servidores o servicios criticos.
+* Ubuntu - Nacio en 2004, basado en Debian y mantenido por Canonical Ltd. Se enfoca en abrir linux al publico general dando la mejor exp de usuario posible.
+* RedHat - Dist comercial desarrollada y mantenida por empresa Red Hat. Es paga y se destina especificamente a entornos corporativos (sobre todo servidores).
+* Fedora - Nacio en 2003, distro de proposito general que destaca por ser de las primeras en adoptar tecnologias nuevas. Proyecto comunitario, amparado por Red Hat desde 2014. Ciclo de lanzamiento 6 meses, con soporte hasta que se lanza la prox verison. Se basa en distro Debia, pero usa el admin de paquetes RPM.
+
+b) se diferencian en:
+* herramientas, shell, GUI.
+* objetivo de uso - como servidor, para usuario, empresarial
+* mantenimiento - se puede basar en la comunidad, en alguna empresa, o en una combinacion de ambas.
+* arancelado - pueden ser gratuitas o pagas, estas ultimas son las orientadas a ambitos corporativos.
+* ciclo de lanzamiento - varia su periodo entre distro y distro, dependiendo de su objetivo. Hay casos que no dispone de ciclo de lanzamiento (Debian, archlinux), otros que poseen ciclo corto/medio (ubuntu c/6meses, Linux Mint c/2 años con hasta 3 versiones hasta el prox ciclo) y ciclo largo mas conservadores (red hat -2 años con soporte 10 años).
+
+c) Debian es una distribucion de GNU/Linux compuesto por software libre desarrollado y mantenido por la comunidad del proyecto Debian. Es uno de los SO mas antiguos basados en linux kernel.
+Periodo fundacional: establecido por Ian Murdock en 1993. La primer version se lanzo ese año (intewrna), luego lanzo al public versiones 0.9x entre 1994 y 1995 soportadas por la FreeSoftFoundation. Lanza la version estable 1.1 en 1996. En ese año Bruce Perens asume el liderazgo del proyecto, creando un contrato social.Finalizo mandato en 1998, con version 1.2.
+Ian Jackson tomo lidrazgo en 1999,  a partir de ahi se inicia un periodo de elecciones anuales.
+A partir de 2005, el lanzamiento 3.1 Sarge actualizo el 73% del soft, mejorando instalacion para usuarios novatos, mejora en hw detection, disp de lenguajes diversos...
+

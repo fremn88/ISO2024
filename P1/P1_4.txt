@@ -1,0 +1,41 @@
+4. ---- Kernel ----
+
+a) Elemento principal de los sistemas operativos Linux, funciona xomo interfaz entre hw y los procesos de una pc. 
+Reseña historica:
+*1991 Linus Trovalds comienza a trabajar en un SO inspirado en unix, iniciando con un task switcher en lenguaje ensablador para intel 80386. La version 0.01 consistio en archivo no ejecutable sino compilable, en 1991.
+En octubre 1991 Linus anuncio la oficial version 0.02.
+Linux crecio rapidamente junta a comunidad MINIX (compilador de este archivo). Al mismo tiempo , GNU pryect habia completado varios componentes para su SO libre alternativo a UNIX, por lo cual adoptan el kernel a este proyecto.
+Se lanzo version 0.11 en dic 1991 como la primer version selfHosted compilada en una computadora corriendo linux kernel. 
+1992 siguio con v 0.12 y la GNU GPL.
+
+b) Funciones:
+* Administracion memoria - lleva registro de que procesos usan memoria, cuanta usan y donde la usan.
+* Administracion de procesos - determina que procesos usan el recurso del CPU, cuando y por cuanto tiempo.
+* Driver de dispositivos - actua de mediador/interprete entre procesos y hw (dispositivos sin UI).
+* System call y seguridad - recibe pedidos para brindar servicio por parte de los procesos.
+
+c) version al 29/08/2024: estable 6.10.7. Reseña historica - 
+* 1991 linus programa kernel basado en minix v 0.01(compilador) basado en clon unix.
+* 1991 lanza primera version oficial 0.02.
+* 1992 combinado con GNU dan origen al SO GNU/Linux
+* 1994 se lanzo la v 1.0.
+* 1996 se lanzo la v 2.0 y se define la nomenclatura versionado. Termino en 2004 con v2.0.40
+* 1999 lanzan v2.2 con mejoras en portabilidad entre otras, finaliza 2004 con v2.2.26
+* 2001 lanzan version 2.4 y se deja de desarrollar en 2010 con la 2.4.37.11 - esta version catapulto gnu/linux como un so estable y robusto.
+* 2003 lanza v2.6 con soporte hilos, mejora en planificacion, 2011 lanza v2.6.39.4 siendo la ultima.
+* 2011 lanza v3.0 por los 20 años del so y para no pasar la revision n° 40 anterior. compatible con 2.6
+
+A B C D
+A: version, cambio menor frecuenca
+B: mayor revision. 
+C: menor revision cambia con drivers o caracteristicas
+D: correccion de errores graves sin funcionalidades, casi sin uso.
+
+d) se pueden tener varios instalados (distintas versiones) pero estaria funcionando uno solo.
+
+e) el kernel linux se encuentra dentro de /boot. 
+
+f) un SO monolitico es aquel que tiene un solo nucleo grande que contiene todas las funciones y servicios basicos del sistema como administracion de memoria, programacion de procesos, sistema de archivos, controladores, protocolos de red y llamadas al sistema. Este es el caso de Linux, windows, macOS.
+Un SO microkernel en contrapartida es aquel que tiene un kernel pequeño que solo proporciona funciones y servicios mas basicos del sistema, como la comunicacion entre procesos, protecion de memoria, y la abstraccion de hw de bajo nivel. El resto de las funciones y servicios se implementan como modulos o procesos separados que se ejecutan en modo usuario y comunican con el kernel y entre si a traves de paso de mensajes. Es modular y flexible, pero es mas lento por sobreecargar de comunicacion los componenes. Ej QNX, Minix, L4
+
+

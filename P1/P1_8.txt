@@ -1,0 +1,102 @@
+8. ---- Arranque (bootstrap) de un Sistema Operativo ----
+
+(a) ¿Qué es el BIOS? ¿Qué tarea realiza?
+
+Las siglas BIOS hacen referencia a las palabras Basic Input-Output System, que en español significa Sistema Básico de Entrada-Salida. La BIOS es lo primero que se ejecuta al encender un ordenador, una tablet, un smartphone o cualquier otro tipo de aparato electrónico. Si bien cuando no se trata de un ordenador no se suele llamar BIOS, en esencia es lo mismo. La BIOS es una secuencia de códigos de ejecución (software) almacenada en un chip de la placa base (hardware) que permite a misma reconocer qué está conectado a ella; procesador, tarjeta gráfica, RAM, unidades de almacenamiento… y cualquier otra tarjeta adicional PCIe. Sin la BIOS tan solo tendríamos una placa base, no un ordenador.
+
+
+(b) ¿Qué es UEFI? ¿Cuál es su función?
+
+La Unified Extensible Firmware Interface (UEFI, lit. «interfaz unificada de firmware extensible») es una especificación que define una interfaz entre el sistema operativo y el firmware. UEFI reemplaza la antigua interfaz del Sistema Básico de Entrada y Salida (BIOS) estándar presentado en las computadoras personales IBM PC como IBM PC ROM BIOS.
+
+
+(c) ¿Qué es el MBR? ¿Que es el MBC?
+MBR master boot record
+MBC master boot code
+
+** MBR es una forma de almacenar la informaion particionada en disco. (estandar para la disposicion de tabla de particiones).
+Al final de la rutina de arranque de la ROM BIOS, la BIOS lee y ejecuta el primer sector físico del primer disquete o disco duro del sistema. Este primer sector del disco duro se denomina registro de arranque maestro (o a veces tabla de particiones o bloque de arranque maestro) ocupando 512 bytes. Hay un pequeño programa al principio de este sector del disco duro. La información de la partición, o tabla de particiones, se almacena al final de este sector. Este programa utiliza la información de la partición para determinar qué partición es arrancable (normalmente la primera partición primaria de DOS) e intenta arrancar desde ella.
+El MBC es una de las partes del MBR. Realiza el primer conjunto de funciones en proceso de arranque. Consume 446 bytes del MBR. El resto del espacio se usa para la tabla de particiones (donde esta cada particion y cual es para arranque) con unos 64 bytes, y 2 byes para firma de disco.
+
+
+
+(d) ¿A qué hacen referencia las siglas GPT? ¿Qué sustituye? Indique cuál es su formato.
+
+GUID Partition Table, es un nuevo estandar comparado con el viejo MBR. Fue introducido como parte de la iniciativa UEFI. 
+Un disco GPT aun contiene un sector MBR, llamado MBR protegido. El segundo sector contiene el encabezado la GUID partition table. Define lugar y tamaño de particiones, junto con un chequeo de redundancia por integridad de los datos.
+En el tercer sector estan las particiones, su numero es solo limitado por el SO.
+Permite mayor espacio de disco a comparacion del MBR que esta limitado a 2TB, y tambien mayor cantidad de particiones a comparacion del MBR (limitado a 4 particiones o 3 ´+ 1 extendida).
+
+
+(e) ¿Cuál es la funcionalidad de un “Gestor de Arranque”? ¿Qué tipos existen? ¿Dónde se
+instalan? Cite gestores de arranque conocidos.
+
+**filmins : la finalidad del gestor de arranque es cargar una imagen del kernel de alguna particion para su ejecucion. Este inicia su ejecucion luego de la BIOS, que es el firmware que lo invoca.
+El cargador de arranque puede estar en:
+Disco duro externo o interno:
+Con firmware BIOS. En estos sistemas el primer cargador de arranque se ubica en los primeros 446 bytes del MBR. El resto del MBR lo ocupa la tabla de particiones (64 bytes) y los 2 bytes finales a 0x55AA.
+Con firmware UEFI. En estos sistemas los cargadores de arranque se ubican en la EFI System Partition (ESP).
+CD/DVD
+ISO
+memoria USB
+Servidor de Red NFS/HTTP/FTP
+
+Ejemplos de cargadores de arranque son:
+
+LILO (siglas de Linux Loader). Descontinuado por sus limitaciones entre ellas no servir para firmware con interfaz UEFI. Solo sirve para firmware BIOS
+ELILO (siglas de EFI Linux Loader). Es el cargador de arranque más antiguo de Linux compatible con EFI. Es similar a LILO. Está descontinuado.​
+GRUB legacy. Antes de GRUB 2 se llamaba simplemente GRUB. Soporta firmware con interfaces BIOS y UEFI.
+GRUB 2. Es una nueva versión de GRUB pero sin reutilizar nada del código original de la versión anterior de GRUB (GRUB legacy. Soporta firmware con interfaces BIOS o UEFI. Soporta características avanzada como cargar drivers o definir sentencias que configuran el arranque en función de condiciones del sistema como por ejemplo si hay un disco externo conectado.
+Das U-Boot. Solo soporta firmware UEFI. Se usa para sistemas empotrados y es el más usado para arquitecturas ARM.
+systemd-boot. Antes llamado gummiboot. Solo soporta firmware UEFI. Es en modo texto. Es muy simple y se enlaza con el bootloader nativo de la propia UEFI. Comparado con GRUB 2 es más robusto, más veloz pero tiene menos opciones de administración.
+Shim. Cargador de arranque firmado para su uso con Secure Boot.10​
+Preloader. Cargador de arranque firmado para su uso con Secure Boot.10​
+Del proyecto SYSLINUX. EL proyecto SYSLINUX proporciona un conjunto de cargadores de arranque ligeros:
+SYSLINUX original. Permite arrancar desde sistemas de archivos FAT. Usado para arrancar desde de discos flexibles y memorias USB)
+ISOLINUX. Permite arrancar desde sistemas de archivos ISO 9660. Usado para arrancar desde CD/DVD.
+EXTLINUX. Permite arrancar desde sistemas de archivos ext2, ext3, ext4 y btrfs.
+PXELINUX. Permite arrancar desde servidores de red con sistemas PXE (Preboot Execution Environment)
+MEMDISK. Permite arrancar desde memoria
+LOADLIN (siglas de LOAD LINux). Cargador de arranque antiguo que permitía arrancar Linux, DOS y versiones antiguas de Windows.5​ Descontinuado.
+NTLDR (siglas de NT Loader). Cargador de arranque de las primeras versiones de Microsoft Windows NT, incluyendo Windows XP y Windows Server 2003.
+BOOTMGR (siglas de BOOT ManaGeR), también llamado Windows Boot Manager. Cargador de arranque usado para reemplazar a NTLDR desde Windows Vista (Windows 7, Windows 8, Windows 10). Con la opción Legacy, el Windows Boot Manager ejecutará NTLDR y continuará el proceso como este lo haría al ejecutar cualquier versión de Windows que haga uso de NTLDR, como Windows XP
+
+Un gestor de arranque es un programa iniciado por el firmware (BIOS o UEFI). Representa el menu que permite al usuartio elegir el siguiente codigo a ejecutar. Normalmente el gestor de arranque forma parte del cargador de arranque como por ejemplo GRUB, LILO o SYSLINUX. Generalmente termina mandando a ejecutar el cargador de arranque, pero no siempre. Este ultimo es responsable de cargar el kernel con los parámetros del kernel y disco RAM inicial según los archivos de configuración. En el caso de UEFI, el kernel en sí puede ser lanzado directamente por el UEFI utilizando el código auxiliar de arranque EFI. Aún se puede usar un gestor de arranque separado para editar los parámetros del kernel antes de arrancar.
+Ejecutado luego del codigo BIOS. Dos modos de instalacion: en MBR (MBR gap), y en sector de arranque de particion raiz (volume boot record)
+Habitualmente se instala en el MBR y asume el rol de MBC. En una computadora en la que hay sólo un sistema operativo, no hay referencias a pantalla generalmente. Si hay un gestor de arranque, este programa nos permitirá elegir el sistema operativo a arrancar. El código del MBC de Windows, por ejemplo, busca en la tabla de particiones cual es la primer partición primaria con el flag de “booteo” activo y transfiere el control al código que se encuentra al comienzo de dicha partición: el PBR (partition boot record).
+En el caso del sistema operativo Linux, se puede optar por distintos gestores de arranque, por ejemplo, LILO (Linux Loader), GRUB (Grand Unified Bootloader) o GAG (Gestor de arranque Gráfico). LILO no se basa en un sistema de archivos específico. Funciona en una variedad de sistemas de archivos. GRUB en cambio, debe comprender el sistema de archivos y el formato de los directorios. GRUB tiene algunas ventajas con respecto a LILO: tiene una línea de comandos interactiva, permite arrancar desde una red y podría considerarse más seguro..
+*Firmware: software que interacciona directamente con hardware, hacen uso de este los sistemas embebidos (impresoras, camaras, celulares,ruters)
+
+
+(f) ¿Cuáles son los pasos que se suceden desde que se prende una computadora hasta que
+el Sistema Operativo es cargado (proceso de bootstrap)?
+
+El BIOS (Basic I/O System) es el responsable de iniciar la carga del SO a través del MBC. Este carga el programa de booteo (desde el MBR). El gestor de arranque lanzado desde el MBC carga el Kernel:  prueba y hace disponibles los dispositivos y luego pasa el control al proceso init. 
+El proceso de arranque se ve como una serie de pequeños programas de ejecución encadenada
+
+
+(g) Analice el proceso de arranque en GNU/Linux y describa sus principales pasos.
+
+La etapa del cargador de arranque no es totalmente necesaria. Determinadas BIOS pueden cargar y pasar el control a Linux sin hacer uso del cargador. Cada proceso de arranque será diferente dependiendo de la arquitectura del procesador y el BIOS.
+
+El BIOS realiza las tareas de inicio específicas de la plataforma de hardware.
+Una vez que el hardware es reconocido y se inicia correctamente, el BIOS carga y ejecuta el código de la partición de arranque del dispositivo de arranque designado, que contiene la fase 1 de un gestor de arranque Linux. La fase 1 carga la fase 2 (la mayor parte del código del gestor de arranque). Algunos cargadores pueden utilizar una fase intermedia (conocida como la fase 1.5) para lograr esto, ya que los modernos discos de gran tamaño no pueden ser totalmente leídos sin código adicional.
+El gestor de arranque a menudo presenta al usuario un menú de opciones posibles de arranque. A continuación, carga el sistema operativo, que descomprime en la memoria, y establece las funciones del sistema como del hardware esencial y la paginación de memoria, antes de llamar a la función start_kernel().
+La función start_kernel() a continuación realiza la mayor parte de la configuración del sistema (interrupciones, el resto de la gestión de memoria, la inicialización del dispositivo, controladores, etc), antes de continuar por separado el proceso inactivo y planificador, y el proceso de Init (que se ejecuta en el espacio de usuario).
+El planificador toma control efectivo de la gestión del sistema, y el núcleo queda dormido (inactivo).
+El proceso Init ejecuta secuencias de comandos (Scripts) necesarios para configurar todos los servicios y estructuras que no sean del sistema operativo, a fin de permitir que el entorno de usuario sea creado y pueda presentarse al usuario con una pantalla de inicio de sesión
+Para los dispositivos con arranque mediante UEFI, el cargador de arranque se almacena como ejecutable EFI en la partición ESP. EFISTUB es una característica del núcleo Linux que permite ejecutarse a sí mismo mediante la incrustación de código que lo convierte en un ejecutable EFI; los parámetros son pasados al núcleo mediante variables EFI, y este debe ser capaz de encontrar y cargar el archivo initrd.
+En el apagado, Init es llamado a cerrar toda las funcionalidades del espacio de usuario de una manera controlada, de nuevo a través de secuencias de comandos, tras lo cual el Init termina y el núcleo ejecuta el apagado.
+
+
+(h) ¿Cuáles son los pasos que se suceden en el proceso de parada (shutdown) de GNU/Linux?
+
+El comando para finalizar correctamente un sistema Linux es shutdown. Se utiliza generalmente de una de dos maneras diferentes:
+- Si Ud. es el único usuario del sistema, debe finalizar todos los programas que estén en ejecución, finalizar todas las sesiones (log out) de todas las consolas virtuales, e iniciar una sesión como usuario root (o mantener la sesión si ya existe una, pero debe cambiar de directorio de trabajo al directorio HOME de root, para evitar problemas al desmontarse los sistemas de archivos). Finalmente ejecute el comando shutdown -h now. Si desea postergar durante algún lapso el comando shutdown, reemplace now con un signo + (mas) y un número que indica minutos de espera.
+- Alternativamente, si el sistema está siendo utilizado por muchos usuarios, utilice el comando shutdown -h +time mensaje, donde time es el número de minutos en que se posterga la detención del sistema, y el mensaje es una explicación breve del porqué se está apagando el sistema. # shutdown -h +10 'We will install a new disk. System should > be back on-line in three hours.' # El ejemplo advierte a todos los usuarios que el sistema se apagará en diez minutos, y que sería mejor que se desconectaran o se arriesgan a perder la información con la que están trabajando. La advertencia se muestra en cada terminal donde existe un usuario conectado, incluyendo las xterm (emuladores de terminales para el sistema X Window).
+
+(i) ¿Es posible tener en una PC GNU/Linux y otro Sistema Operativo instalado? Justifique.
+
+Si, ya que un disco rígido puede particionarse y en cada partición tener un sistema de archivos distinto (partición primaria), sería como tener varios discos distintos, uno con cada SO, por lo tanto, se necesitará un gestor de arranque como los descriptos arriba.
+
+

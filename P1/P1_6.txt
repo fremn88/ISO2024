@@ -1,0 +1,26 @@
+6. ---- Sistema de archivos ----
+
+a) Es un sistema que controla la manera en que los datos son almacenados y leidos. Asignar algun orden predeteminado a los datos facilita la identificacion de la informacion. La estructura y reglas logicas utilizadas para administrar grupos de informacion y sus nombres es llamado "fileSystem".
+
+b) filesystems soportados por linux: minix, ext, ext2, ext3, xia, msdos, umsdos, vfat, proc, nfs, iso9660, hpfs, sysv, smb, ncpfs.
+
+c) Linux se base en caracteristicas de filesystems que no son soportadas por fat y nfs por lo que Linux no permite ver por defecto el contenido de las particiones de Windows. Para poder hacerlo será necesario que montemos la partición NTFS o FAT en la que está Windows. Aunque en estos momentos existen distribuciones de GNU-Linux que pueden realizar operaciones de lectura y escritura sobre ellas.
+El Kernel de unix tiene soporte para el manejo de particiones FAT,NTFS
+
+d) La estructura de archivos es una estructura jerárquica en forma de árbol invertido, donde el directorio principal (raíz) es el directorio "/", del que cuelga toda la estructura del sistema. Este sistema de archivos permite al usuario crear, borrar y acceder a los archivos sin necesidad de saber el lugar exacto en el que se encuentran. No existen unidades físicas, sino archivos que hacen referencia a ellas. 
+/bin: En donde se residen los comandos principales de Linux como ls o mv.
+/boot: Aquí se encuentran los cargadores de inicio y los archivos de inicio del sistema.
+/dev: En esta ruta se encuentran montados todos los dispositivos físicos como el USBs o el DVDs.
+/etc: Contiene la configuración de los paquetes instalados.
+/home: Los usuarios del sistema tendrán su carpeta personal para colocar todas sus carpetas adicionales con su nombre como se muestra a continuación: /home/likegeeks.
+/lib: Aquí se guardan las librerías de los paquetes instalados ya que estas librerías son compartidas por todos los paquetes. A diferencia de Windows, puedes encontrar duplicados en diferentes carpetas.
+/media: En esa ruta se encuentran los dispositivos externos como los DVDs ylos pendrives USB, desde aquí puedes acceder a sus archivos desde aquí.
+/mnt: Aquí se montan otras cosas como localizaciones de red y algunas distribuciones que puedas tener montadas en un pendrive o DVD.
+/opt: Algunos paquetes opcionales se encuentran aquí y esta ruta es administrada por el administrador de paquetes.
+/proc: Debido a que todo en Linux es un archivo, esta es una carpeta que tiene los procesos ejecutándose en el sistema, y puedes acceder a ellos para obtener información acerca de los procesos actuales.
+/root: La carpeta home para el usuario root.
+/sbin: Como /bin, pero con archivos binarios solo para el usuario root.
+/tmp: Contiene los archivos temporales.
+/usr: Aquí es donde las utilidades y los archivos se comparten entre usuarios en Linux.
+/var: Contiene registros del sistema y otros datos variables
+FSH: El estándar de jerarquía del sistema de archivos (o FHS, del inglés Filesystem Hierarchy Standard) es una norma que define los directorios principales y sus contenidos en el sistema operativo GNU/Linux y otros sistemas de la familia Unix.

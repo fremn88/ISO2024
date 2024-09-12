@@ -1,0 +1,67 @@
+11. Investigue su funcionamiento y parámetros más importantes:
+(a) shutdown
+(b) reboot
+(c) halt
+(d) locate
+(e) uname
+(f) gmesg
+(g) lspci
+(h) at
+(i) netstat
+(j) mount
+(k) umount
+(l) head
+(m) losetup
+(n) write
+(ñ) mkfs
+(o) fdisk (con cuidado)
+
+(a) shutdown
+El comando shutdown se utiliza para apagar o reiniciar Linux desde la terminal.
+Detener el sistema de forma segura.
+shutdown [OPTIONS] [TIME] [MESSAGE]
+(b) reboot
+Reinicia SO
+-reboot, -r: reinicia el sistema
+(c) halt
+El comando halt se utiliza para apagar el ordenador
+
+(d) locate
+El comando locate es una alternativa útil, ya que es más rápido que find para realizar búsquedas. Eso se debe a que sólo escanea tu base de datos de Linux en lugar de todo el sistema
+locate [my-file]
+(e) uname
+Si utilizamos el comando sin argumentos nos entregara la palabra Linux extraída de la información del Kernel.
+$ uname
+Si deseamos extraer la información de la versión del kernel utilizamos el parámetro -r.
+$ uname -r
+Si deseamos extraer la fecha de cuando la versión del kernel fue liberada utilizamos el parámetro -v.
+$ uname -v
+(f) dmesg
+Se usa para examinar o controlar el ring buffer del kernel. Con esto se pueden visualizar los mensajes que envian los dispositivos en el proceso bootstrap o de arranque. La acción predeterminada es mostrar todos los mensajes del ring buffer.
+Debido a toda la información desplegada, es difícil llevar a cabo alguna tarea de administración allí. Podemos hacer uso del parámetro “-H” con el fin de indicarle a dmesg que la salida sea legible para los usuarios, lo cual simplificará las tareas de soporte. Allí encontramos detalles mucho más claros sobre el anillo del kernel.
+Otra alternativa para realizar un análisis con dmesg es con el parámetro “-w”, el cual nos permite escribir un script para analizar el resultado usando una expresión regular con el fin de filtrar los eventos para su posterior análisis:
+(g) lspci
+lspci es un comando para los sistemas operativos Unix-like que imprime listas con información detallada sobre todos los Buses y dispositivos del sistema
+(h) at
+Permite programar tareas únicas en nuestro sistemas GNU/Linux, a una hora determinada y fecha determinada. 
+at [hora] [fecha]
+El comando at, nos puede ser útil para apagar el sistema a una hora especifica, realizar una copia de seguridad única, enviar un correo electrónico como recordatorio a la hora especificada, entre otras muchas cosas.
+(i) netstat
+netstat (estadísticas de red) es una herramienta de línea de comandos que muestra las conexiones de red (entrantes y salientes), tablas de enrutamiento y una serie de estadísticas de interfaz de red.
+(j) mount
+El mandato mount ordena al sistema operativo que haga que un sistema de archivos esté disponible para su utilización en una ubicación determinada (el punto de montaje). 
+(k) umount
+Este comando permite desmontar un sistema de archivos montado previamente.El uso del comando umount garantiza que toda la información mantenida en memoria por el sistema operativo se escriba en el dispositivo antes de desmontarlo
+Sintaxis: umount dispositivo | punto_montaje
+(l) head
+El comando head muestra de modo predeterminado las diez primeras líneas de un archivo. Se puede modificar esta opción a las N primeras líneas del archivo con la sintaxis head -nN.
+(m) losetup
+se usa para asociar loop devices con archivos regulares o block devices, también para desacoplar loop devices, y para hacer queries del status de un loop device. (dispositivo iterador = loop device)
+(n) write
+El comando write permite mandar un mensaje a otro usuario del sistema especificando como parámetros el usuario al que enviar el mensaje y la TTY asociada:
+$ write usuario tty. 
+Para finalizar la escritura del mensaje y enviarlo presionamos CTRL + D. La TTY se especificará cuando el usuario al que enviemos el mensaje tenga más de una sesión abierta. En el caso de que no le especificamos, se enviará automáticamente a la tty del usuario con actividad más reciente
+(ñ) mkfs
+se  utiliza para dar formato a un dispositivo de almacenamiento de bloque con un determinado sistema de archivos.
+(o) fdisk (con cuidado)
+es una utilidad de línea de comandos basada en texto para ver y administrar particiones de disco duro en Linux. Con fdisk puedes ver, crear, cambiar el tamaño, eliminar, cambiar, copiar y mover particiones.más info de Fdisk: https://maslinux.es/comando-fdisk-para-administrar-particiones-de-disco-en-gnulinux/

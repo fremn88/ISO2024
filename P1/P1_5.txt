@@ -1,0 +1,18 @@
+5. ---- Linea de comandos ----
+
+a) Es una interfaz que se encarga de tomar las instrucciones que da el usuario en formato texto y traducirlas para que puedan ser procesadas por el SO.
+
+b) Su funcion es recibir comandos del usuario, iterpretarlos y pasarlos al SO para su ejecucion. Luego puede devolver resultado por la misma pantalla. Es prioridad simplificar la informacion para el usuario sin graficas y con rapidez.
+
+c) iterpretes de comandos GNU/linux:
+* Bourne shell (sh) - cli para so tipo unix. Creado en los 70s, soporta variables, est de control, built in comands, y scripting basico. Antesesor de bash, ksh, zsh.
+* Bourne again shell (bash): version mejorada de bourne shell. -- Instalado por default en la mayoria de sistemas linux y macOS. -- permite scripting lo cual facilita automatizacion de tareas. -- tiene varios comandos incorporados para procesamiento de datos, archivos, calculos. -- Customizacion usando variables, funciones. -- User friendly: autocompletado, historial, redireccion..
+* C-Shell (csh). Procedente del sistema BSD, proporciona funciones tales como control de trabajos, historial de órdenes, etc. Ofrece importantes características para los programadores que trabajan en lenguaje C. Su símbolo del sistema es %.
+* korn shell (ksh) cli para unix, de los 80s. compatible con sh, provee caracteristicas de C shell y otras shell avanzadas. -- historial, -- aliases y funciones, -- arrays, --opreaciones string y aritmeticas.
+
+**d) Los comandos propios de la shell son los llamados internos, no se corresponden a un archivo almacenado en disco. El shell trabaja con su directorio actual. Para comandos externos, se trata de un archivo localizado en el arbol de sistema de archivos. Al solicitarse la ejecucion de un comando externo el shell pide al nuecleo carga en memoria el archivo ubicado en el path correspondiente, ejemplo ls: /usr/bin/ls
+
+**e) El shell no es parte del kernel principalmente por su funcion, que no implica interaccion con el hardware sino que abarca interaccion usuario - SO.
+
+f) Es posible definir un interprete de comando distinto para c/ usuario. El proceso login inicia automaticamente un interprete por defecto, que luego desde alli puede ser personalizado. (proceso de "loggeo" del usuario). La ubicacion del archivo donde se encuentra el contenido personalizado de cada usuario en cuanto a interprete se puede ver en /etc/passwd.
+

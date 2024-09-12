@@ -1,0 +1,27 @@
+1. ---- Caracteristicas de GNU/Linux ----
+a) Software libre - tiene licencia GPL la cual permite distribuir, copiar, modificar, usar el software libremente siempre y cuando no se utilice como software privativo (terminos de GLP)
+
+   Codigo abierto - el codigo fuente es accesible, por lo que puede usarse para auditorias o modificaciones con facilidad
+
+   multiusuario - permite el uso compartido de recursos de la pc a usuarios en simultaneo. Originalmente se referia a uso de procesador, memoria, e/s de una computadora, en terminos modernos al exisitir multiples procesadores e interfaz de usuario mediante redes, proveen servicio de forma coordinada.
+
+   multitarea y multiproceso - originalmente en SO antiguos al correr mas de 1 programa estos se agregaban a una cola para hacer uso del CPU (W 3.1). Posteriormente, otros SO usan el concepto de "sandbox" donde los programas corrian en forma paralela (multitarea) siendo el SO el intermediario entre estos y el CPU. Un entorno multiproceso permite que los respectivos "sandboxes" se asignen a diferentes "nucleos fisicos". Con la aparicion de procesadores con mas de 1 nucleo, aparece la adaptacion del software para correr en varios hilos en simultaneo , esto es, aprovechar el uso de todos los nuecleos del procesador en simultaneo.
+
+   portable - se refiere a la capacidad del SO para ser compilado para diversas arquitecturas de computadoras. el kernel Linux puede ser instalado en dispositivos diversos: 386-, 486-. Pentium, Pentium Pro, Pentium II,Amiga y Atari, tambien existen versiones para su utilización en otras plataformas, como Alpha, ARM, MIPS, PowerPC y SPARC
+
+b) Comparacion con otros SO:
+ - MSDOS: no libre, monousuario, monotarea.
+ - Win 95: no libre, monousuario(no server), multitarea.
+ - Unix: multitarea, multiusuario, multiptoceso. Versiones libre y no libres.
+ - linux idem unix, compatible con este (proviene de..)
+
+c) GNU es un sistema operativo de soft libre. Se conforma por paquetes GNU que son publicados especificamente por el proyecto GNU pero tambien incluye soft libre publicado por terveras partes. Es un SO tipo Unix, esto es, una coleccion de aplicaciones, bibliotecas, herramientas de desarrollos, entre otros. En este tipo de SO el programa que asigna recursos de la maquina y se comunica con el hw se denomina "kernel" o nucleo. GNU se usa popularmente con kernel linux, el propio de GNU es el kernel Hurd.
+
+d) proyecto GNU iniciado en 1983 por Richard Stallman con objetivo de crear el primer SO completamente libre. RS escribe la licencia general publica GNU para darle un marco legal al soft libre que asegure los derechos de los usuarios (copia, ejecucion, modificacion, distribucion), y asegurar que no se creen restricciones posteriores al mismo. Es la idea del "copyleft".
+Creo la "freeSoftFoundation" cuyo fin era proveer soporte al proyecto GNU. Hacia 1990 el SO contaba con la mayoria de los componentes necesarios: compiladores, editores texto, etc. El componente principal, el kernel, se combino para dar lugar al SO completamente funcional.
+
+e) explicado en inciso a). LINUX utiliza la llamada multitarea preventiva, la cual asegura que todos los programas que se están utilizando en un momento dado serán ejecutados, siendo el sistema operativo el encargado de ceder tiempo de microprocesador a cada programa.
+
+F) POSIX es una familia de estandares de la IEEE que especifica las API (application programing interface) y otras cuestiones similares como prestaciones de la CLI de la shell provistas por sistemas operativos tipo unix. 
+aplicar estandar POSIX implica una mayor facilidad para portar un programa a un SO cualquiera de la familia Unix.
+

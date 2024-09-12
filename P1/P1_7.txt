@@ -1,0 +1,67 @@
+7. ---- Particiones ----
+
+a) Definición. Tipos de particiones. Ventajas y Desventajas.
+Es una division logica de una unidad de almacenamiento (disco duro o flash), en la cual se alojan y organizan los archivos mediante un fileSystem.
+Entre los esquemas de particion mas conocidos estan el MBR master boot record y el GPY GUID partition table.
+Para discos opticos existe otro tipo de particion llamado UDF universal disc format.
+Los tipos de particion pueden ser basicamente 3: 
+*Particion primaria - es la particion principal de un disco. Un disco fisico tiene una de estas particiones como minimo, la cual sera reconocida por el sistema y permitirá el arranque. Solo pueden haber 4 de estas, o 3 + 1 secundaria.
+*Particion secundaria - conocida tmb como extendida, es igual a la primaria pero se puede dividir logicamente en varias particiones sin limitacion. Solo 1 por disco.
+*Particion logica - ocupa una porcionde la part extendida o la totalidad de la misma, la cual se ha formateado con un tipo especifico de sist de archivos.
+
+Ventajas y desventajas
++ copia de seguridad
++ unidades mas organizadas
++ multiplicidad de sistemas para almacenar archivos en un mismo disco
++ del punto anterior, se pueden instalar SO en particiones diferentes
++ proteccion de archivos importantes, ej separar arch usuario y de so.
+
+- errores de particion por exceso
+- perdida de datos, al dañarse el disco se pierden todas las particiones
+- fragmentacio
+
+b) ¿Cómo se identifican las particiones en GNU/Linux? (Considere discos IDE, SCSI y SATA).
+
+** info extraida de: https://www.fpgenred.es/GNU-Linux/particionado_del_disco.html#:~:text=Las%20particiones%20en%20cada%20disco,disco%20SCSI%2C%20SATA%20o%20USB. **
+
+En GNU/Linux, los nombres de los discos y de las particiones son diferentes a los usados en otros sistemas operativos. La siguiente lista los describe:
+La primera unidad de disco flexible se llama /dev/fd0.
+La segunda unidad de disco flexible se llama /dev/fd1.
+La primera unidad de disco SCSI (incluye los discos SATA y los discos USB) se llama /dev/sda.
+La segunda unidad de disco SCSI se llama /dev/sdb, y así sucesivamente.
+La primera unidad de un CD-ROM SCSI se llama /dev/scd0, también denominada como /dev/sr0.
+El disco maestro en el controlador IDE primario se llama /dev/hda.
+El disco esclavo en el controlador IDE primario se llama /dev/hdb.
+El disco maestro en el controlador IDE secundario se llama /dev/hdc.
+El disco esclavo en el controlador IDE secundario se llama /dev/hdd.
+Las particiones en cada disco son representadas añadiendo un número al nombre del disco: /dev/sda1 y /dev/sda2 representan a la primera y segunda partición en la primera unidad de disco SCSI, SATA o USB.
+
+c) ¿Cuántas particiones son necesarias como mínimo para instalar GNU/Linux? Nómbrelas indicando tipo de partición, identificación, tipo de File System y punto de montaje.
+
+** Como mínimo, GNU/Linux necesita una partición para funcionar. Se puede tener una sola partición para alojar a todo el sistema operativo, aplicaciones y nuestros ficheros personales. En muchas ocasiones se piensa que tener una partición de intercambio también es necesario, pero esto no es estrictamente cierto. La partición de intercambio o swap, es un espacio en sí dentro del sistema operativo, el cual le permite al sistema usar el disco como memoria virtual. Al crear una partición de intercambio separada, GNU/Linux puede hacer un uso mucho más eficiente de ésta. Es posible forzar a GNU/Linux para que use un fichero como espacio de intercambio, pero no es recomendable por su menor eficiencia.
+Punto de montaje:
+Habitualmente se crea la particion raiz, que contiene componentes escenciales del sistema.
+Cada particion se integra en el sist de almacenamiento para formar parte de un unico juego de archivos y directorios. Esto se consigue asociando una particion con un directorio mediante un proceso llamado montaje. Montar una particion significa disponer de su capacidad de almacenamiento comenzando en un directorio especifico denominado punto  de montaje.
+Ej. particion dev/hda montada en /root significa que todos los archivos y directorios bajo /root estarian fisicamente alojados en dev/hda.
+
+d) Ejemplifique diversos casos de particionamiento dependiendo del tipo de tarea que se
+deba realizar en su sistema operativo.
+
+* En caso de uso del SO para servidores, contar con una particion para uso de espacio segregando el SO del espacio para tareas de alojamiento de datos del servidor evitaria que un potencial llenado de disco genere error en SO por falta espacio.
+* Instalar SO distintos en un mismo disco, cuyos sistemas de archivos no sean compatibles. Permite SO duales.
+* Generar particion para asignar espacio de disco a memoria virtual
+* Segregar informacion de usuario, para evitar formatear todo el contenido limitandose al SO en caso de querer modificarlo
+
+e) ¿Qué tipo de software para particionar existe? Menciónelos y compare
+Existen 2 tipos:
+* Destructivos - permiten crear y eliminar particiones (fdisk)
+* No destructivo - permiten crear, eliminar y modificar particiones (fips, gparted) ← generalmente las distribuciones permiten hacerlo desde la interfaz de instalación
+
+-partman 
+Herramienta original de Linux para particionar discos. Esta «navaja suiza» también puede ajustar el tamaño de las particiones, crear sistemas de ficheros (como se llama en Windows a “formatear”) y asignarlos a sus respectivos puntos de montaje. 
+-fdisk 
+Es la herramienta original de Linux para particionar discos, buena para expertos. 
+Sea cuidadoso si tiene una partición de FreeBSD en su máquina. Los núcleos instalados traen soporte para este tipo de partición, pero la manera en que fdisk la representa, puede (o no) ser un poco diferente.
+-cfdisk 
+Una herramienta para particionar a pantalla completa, muy fácil de usar. Recomendada para la mayoría de los usuarios. 
+cfdisk no reconoce las particiones de FreeBSD, y nuevamente, los dispositivos mostrados en pantalla pueden ser un tanto diferentes a los que realmente tiene
