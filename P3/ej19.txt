@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "Menu de seleccion"
+select op in $(ls) exit
+do
+case $op in
+	exit) echo "finalizando.."
+	sleep 1
+	exit 0
+	;;
+	*) bash $op
+	;;
+esac
+done
+exit 1
+	

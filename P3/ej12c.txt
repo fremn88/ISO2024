@@ -1,0 +1,14 @@
+#!/bin/bash
+#es indistinto si el case se pone la opcion con o sin ".
+operador=$3
+if [ $# -ne 3 ]; then
+	echo "debe ingresar 1er parametro operacio y luego dos parametros mas con numeros"
+else
+	case $operador in
+		+) echo "suma: $(($1 + $2))" ;;
+		"-") echo "resta: $(($1 - $2))" ;;
+		"/") echo "division: $(($1 / $2))" ;;
+		"*") echo "multiplicacion: $(($1 * $2))" ;;
+		*) echo "operador no valido, ingrese +, -, * o /"
+	esac
+fi

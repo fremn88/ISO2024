@@ -1,0 +1,64 @@
+#!/bin/bash
+
+arr=($(ls $HOME | grep ".doc"))
+
+verArchivo() {
+	if [ $# -ne 1 ]; then
+		echo "Debe ingresar un nombre de archivo"
+		exit 1
+	fi
+	for i in ${arr[@]}; do
+		if [ $1 = $i ]; then
+			echo $(cat "$HOME/$1")
+			return 0
+		fi
+	done	
+	echo "Archivo no encontrado"
+	return 5
+}
+
+cantidadArchivos() {
+
+	echo "Cantidad de archivos: ${#arr[@]}"	
+	return 0
+}
+
+borrarArchivo() {
+
+	if [ $# -ne 1 ]; then
+		echo "Debe ingresar un nombre de archivo a borrar"
+		exit 1
+	fi
+	
+	for ((i=0; i<${#arr[@]}; i++)); do
+		if [ ${arr[i]} = $1 ]; then
+			echo "Desea eliminar el archivo logicamente? Si/No "
+			read rta
+			if [ $rta = Si ]; then
+				unset arr[i]
+				return 0
+			elif [ $rta = No ]; then
+				unset arr[i]
+				rm $1
+				return 0
+			else
+				echo "debe responder Si o No"
+				return 2
+			fi
+		fi	
+	done
+	echo "Archivo inexistente"
+	return 10
+}
+
+echo "Array actual: ${arr[@]}"
+echo "$(cantidadArchivos)"
+echo "Ingrese nombre archivo a ver: "
+read arch
+verArchivo $arch
+echo "valor retorno: $?"
+echo "Ingrese nombre archivo a eliminar: "
+read arch
+borrarArchivo $arch
+echo "valor retorno: $?"
+echo "Array actual: ${arr[@]}"

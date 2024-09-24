@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then echo "Debe ingresar extension como parametro"
+exit 1
+fi
+logged=0
+while [ $logged -eq 0 ]
+do
+	sleep 5
+	if [ $1 = $(who | cut -d " " -f 1 | grep $1) ]; then
+	logged=1
+	echo ”Usuario $(who) logueado en el sistema”
+	fi
+done
+exit 0	

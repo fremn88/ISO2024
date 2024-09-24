@@ -1,0 +1,9 @@
+echo "Valores del 1 al 100"
+for valor in $(seq 100); do
+	echo $valor
+done;
+echo
+echo "valores al cuadrado"
+for valor in $(seq 100); do
+	echo "$(($valor*$valor))"
+done;

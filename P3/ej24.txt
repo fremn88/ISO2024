@@ -1,0 +1,11 @@
+#!/bin/bash
+
+vector1=( 1 80 65 35 2 )
+vector2=( 5 98 3 41 8 )
+indice=0
+for i in ${vector1[@]}
+do
+	echo "La suma de los elementos de la posicion $indice de los vectores es: $(($i+vector2[indice]))"
+	indice=$((indice+1))
+done
+exit 0

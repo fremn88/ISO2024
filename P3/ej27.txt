@@ -1,0 +1,56 @@
+#!/bin/bash
+
+inicializar() {
+	echo ""
+}
+
+array_vacio=($(inicializar))
+echo ${array_vacio[@]}
+
+agregar_elem() {
+	array_vacio+=($1)
+}
+
+agregar_elem 0
+echo "Agrego elemento 0.."
+echo ${array_vacio[@]}
+
+agregar_elem 1
+echo "Agrego elemento 1.."
+echo ${array_vacio[@]}
+
+eliminar_elem() {
+	if [ $1 -lt ${#array_vacio[@]} ]; then
+		unset array_vacio[$1]
+	fi
+}
+
+eliminar_elem 0
+echo "Elimino elemento en posicion 0.."
+echo ${array_vacio[@]}
+
+longitud() {
+	echo ${#array_vacio[@]}
+}
+
+echo "Longitud del array: $(longitud)"
+
+imprimir() {
+	echo ${array_vacio[@]}
+}
+
+echo "Los elementos del array son: ($(imprimir))"
+
+inicializar_con_valores() {
+	local arr=()
+	for (( i=1; i<=$1; i++ ))
+	do
+		arr+=($2)
+	done
+	echo ${arr[@]}
+}
+
+array_no_vacio=($(inicializar_con_valores 5 0))
+echo "inicializar con valores: ${array_no_vacio[@]}"
+
+exit 0

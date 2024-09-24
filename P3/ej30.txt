@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ $# -ne 0 ]; then
+	echo "No debe enviar parametros"
+	exit 1
+fi
+
+arr=($(ls -F | grep * |))
+
+if [ ${#arr[@]} -ne 0 ]; then
+	if [ -e $HOME/bin ]; then
+		mkdir $bin
+	fi
+		mv {$arr[@]} $HOME/bin
+	echo "Se movieron ${#arr[@]} elementos"
+else
+	echo "No hay archivos para mover"
+fi
+exit 0

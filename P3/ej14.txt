@@ -1,0 +1,19 @@
+#!/bin/bash
+#$1 directorio
+#$2 opcion
+#$3 cadena
+
+if [ $# -ne 3 ]; then exit 1 
+fi
+if [ ! -d $1 ]; then exit 2 
+fi
+if [ "$2" = "-a" ]; then 
+	for v in $(ls $1); do mv $v $v$3 done
+fi
+if [ "$2" = "-b" ]; then 
+	for v in $(ls $1); do mv $v $3$v done
+fi
+if [ "$2" != "-b" ] && [ "$2" != "-a" ] echo "debe proporcionarse opcion -a u opcion -b" exit 3
+fi
+exit 0
+

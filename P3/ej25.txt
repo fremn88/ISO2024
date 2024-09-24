@@ -1,0 +1,20 @@
+#!/bin/bash
+
+arr=($(cat /etc/group | grep users | cut -d ":" -f 4 | tr "," " "))
+if [ $# -ne 1 ]; then echo "Debe ingresar alguno de los parametros: -b n (n=posicion), -l, -i"
+exit 1
+fi
+if [[ $1 == "-b "* ]]; then
+	indice=$(echo "$1" | grep -o "[0-9]" | tr -d "\n")
+	if [[ $indice -lt ${#arr[@]} ]]; then
+	echo "${arr[indice]}"
+	else echo "La posicion ingresada no existe"
+	exit 1	
+	fi
+elif [ $1 == "-l" ]; then
+	echo "${#arr[@]}"
+elif [ $1 == -i ]; then
+	echo "${arr[@]}"
+else echo "Argumento ingresado invalido"
+fi
+exit 0

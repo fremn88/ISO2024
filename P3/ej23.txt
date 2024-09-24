@@ -1,0 +1,19 @@
+#!/bin/bash
+#recorre arreglo de numeros (no chequea) e imprime en pantalla los impares y cuenta los pares y los informa al finalizar recorrido por pantalla.
+#se asume que el arreglo se inicializa en base a parametros pasados al script
+#$@ es donde se consulta la lista de todos los argumentos recibidos
+
+arr=($@)
+pares=0
+for i in ${arr[@]}
+do
+	if [ $(($i%2)) -eq 0 ]
+	then
+		pares=$((pares+1))
+	else
+		echo $i
+	fi
+done
+echo " "
+echo "Cantidad de argumentos pares: $pares"
+exit 0

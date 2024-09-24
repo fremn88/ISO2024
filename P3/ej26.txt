@@ -1,0 +1,21 @@
+#!/bin/bash
+
+arr=($@)
+pos=0
+inex=0
+for i in ${arr[@]}
+do
+	if [ $((pos%2)) -eq 1 ]; then
+		if [ -f $i ]; then
+			echo "$i es archivo"
+		elif [ -d $i ]; then
+			echo "$i es directorio"
+		else
+			echo "$i no existe"
+			inex=$((inex+1))
+		fi
+	fi
+	pos=$((pos+1))
+done
+echo "Cantidad de rutas pasadas inexistentes: $inex"
+exit 0

@@ -1,0 +1,40 @@
+#!/bin/bash
+#Consulta en: unset "pila[last]" Es importante usar las comillas para que no se realicen expansiones de nombre de fichero a causa de los corchetes.
+
+pila=()
+select op in push pop length print exit
+do
+	case $op in
+	exit) 
+		echo "finalizando.."
+		sleep 1
+		exit 0
+	;;
+	push)
+		echo "Ingrese dato para colocar en pila.."
+		read dato
+		pila+=($dato)
+	;;
+	pop)
+		last=${#pila[@]}-1
+		echo "Se obtuvo el siguiente dato de pila: ${pila[last]}"
+		unset "pila[last]"
+	;;
+	length)
+		echo "Longitud: ${#pila[@]}"
+	;;
+	print)
+		echo ${pila[@]}
+	;;
+esac
+done
+
+		
+	
+
+
+
+
+
+
+ 

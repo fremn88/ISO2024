@@ -1,0 +1,20 @@
+#!/bin/bash
+#recibe como parametro una extension
+#genera archivo 2 columnas, nombre usuario y cant de archivos que posee con esa extension
+
+#0.chequeo si recibi extension
+#1.for para iterar sobre listado de usuarios
+#2.dentro de este for se realiza conteo de archivos con la extension consultada
+#3.finalizado el conteo, nombre usuario y cantidad se colocan en archivo reporte.txt
+
+-------------
+if [ $# -ne 1 ]; then echo "Debe ingresar extension como parametro"
+exit 1
+fi
+echo "Reporte de usuarios y archivos con extension $1" > reporte.txt
+for usuarios in $(cat /etc/passwd | cut -d: -f1); do
+cant=$(sudo find /home -user ${usuarios} -name "*$1" | wc -l)
+echo "$usuarios $cant" >> $HOME/reporte.txt
+done
+exit 0
+------------

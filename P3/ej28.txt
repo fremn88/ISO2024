@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#se utlizan los comandos -r y -f explicados en ejercicio 7.
+
+if [ $# -ne 1 ]; then 
+	echo "Debe ingresar un directorio"
+fi
+if [ -d $1 ]; then
+	cant=0
+	for i in $(ls); do
+		if [ -f i$ ]; then
+			if [ -w $i ] && [ -r $i ]; then
+				((cant++))
+			fi 
+		fi
+	done
+fi
+
+echo "Cantidad de archivos con permiso lectura y escritura: $cant"
+exit 0
